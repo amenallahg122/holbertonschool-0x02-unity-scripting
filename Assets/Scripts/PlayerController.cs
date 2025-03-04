@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour {
     public float speed = 5f;
@@ -43,6 +45,22 @@ public class PlayerController : MonoBehaviour {
             {
                 Debug.Log("Game Over!");
             }
+        }
+		if (other.CompareTag("Goal"))
+        {
+            Debug.Log("You win!");
+        }
+    }
+	    void Update()
+    {
+        if (health <= 0)
+        {
+            Debug.Log("Game Over!");
+
+            score = 0;
+            health = 5;
+
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
